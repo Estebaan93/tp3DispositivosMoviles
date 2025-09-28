@@ -1,6 +1,7 @@
 //ui/slideshow/SlideshowFragment
 package com.example.tp3dispositivosmoviles.ui.slideshow;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +29,28 @@ public class SlideshowFragment extends Fragment {
     final TextView textView = binding.textSlideshow;
     slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-    //salir
-    requireActivity().finishAffinity();
+
     return root;
+  }
+
+  @Override
+  public void onResume(){
+    super.onResume();
+    salir();
+  }
+
+  private void salir(){
+    new AlertDialog.Builder(requireContext())
+            .setTitle("Cerrar app")
+            .setMessage("Salir?")
+            .setPositiveButton("Si", (dialog, which) -> {
+              //salir
+              requireActivity().finishAffinity();
+            })
+            .setNegativeButton("No", (dialog, which) -> {
+             dialog.dismiss();
+            })
+            .show();
   }
 
   /*ESTE FRAGMENT ES DEL SALIR*/
