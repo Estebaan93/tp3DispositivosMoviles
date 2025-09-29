@@ -17,6 +17,9 @@ public class ProductoRepositorio {
   private static final ArrayList<Producto> productos= new ArrayList<>();
   /**/
   private MutableLiveData<List<Producto>> productosLiveData;
+  private ProductoRepositorio() {
+    // constructor privado: evita que se cree con "new"
+  }
 
   public static synchronized ProductoRepositorio getInstance() {
     if (instancia == null) {
