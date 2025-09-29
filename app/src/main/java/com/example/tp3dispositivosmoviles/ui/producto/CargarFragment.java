@@ -17,7 +17,7 @@ import com.example.tp3dispositivosmoviles.databinding.FragmentCargarBinding;
 public class CargarFragment extends Fragment {
 
   private FragmentCargarBinding binding;
-  private ProductoViewModel vm;
+  private CargarProductoViewModel vm;
 
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     //com.example.tp3dispositivosmoviles.ui.cargar.CargarViewModel cargarViewModel = new ViewModelProvider(this).get(com.example.tp3dispositivosmoviles.ui.cargar.CargarViewModel.class);
@@ -27,16 +27,17 @@ public class CargarFragment extends Fragment {
 
     //final TextView textView = binding.textGallery;
     //cargarViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-    vm= new ViewModelProvider(requireActivity()).get(ProductoViewModel.class);
+    vm= new ViewModelProvider(requireActivity()).get(CargarProductoViewModel.class);
 
     //Observar mensajes desde el vm
     vm.getEvento().observe(getViewLifecycleOwner(),evento->{
       Toast.makeText(getContext(), evento.getMensaje(), Toast.LENGTH_SHORT).show();
-      if (evento.isLimpiarCampos()) {
+    });
+
+    vm.getLimpiarCampos().observe(getViewLifecycleOwner(), x -> {
         binding.etCodigo.setText("");
         binding.etDescripcion.setText("");
         binding.etPrecio.setText("");
-      }
     });
 
     //cargar
@@ -44,17 +45,9 @@ public class CargarFragment extends Fragment {
       //SETEAR LOS CAMPOS PARA DESPUESD DE LLENAR LOS  CAMPOS, EVITAR USAR CONDICIONES
       String codigo= binding.etCodigo.getText().toString().trim();
       String descripcion= binding.etDescripcion.getText().toString().trim();
+      String precioStr= binding.etPrecio.getText().toString().trim();
 
-
-      double precio = 0;
-      try {
-        precio = Double.parseDouble(binding.etPrecio.getText().toString().trim());
-      } catch (NumberFormatException e) {
-        // Si no es numrico, el ViewModel se encargara de marcarlo invalido
-      }
-
-      vm.agregarProducto(codigo, descripcion, precio);
-
+      vm.agregarProducto(codigo, descripcion, precioStr);
     });
 
     return root;

@@ -10,40 +10,33 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.databinding.DataBindingUtil;
 
+
+import com.example.tp3dispositivosmoviles.R;
 import com.example.tp3dispositivosmoviles.databinding.FragmentListarBinding;
 
 public class ListarFragment extends Fragment {
 
   private FragmentListarBinding binding;
-  private ProductoViewModel vm;
+  private ListarProductoViewModel vm;
 
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    binding= FragmentListarBinding.inflate(inflater, container, false);
-    vm= new ViewModelProvider(requireActivity()).get(ProductoViewModel.class);
+    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_listar, container, false);
+    vm = new ViewModelProvider(requireActivity()).get(ListarProductoViewModel.class);
     View root = binding.getRoot();
 
+    binding.setVm(vm);
+    binding.setLifecycleOwner(getViewLifecycleOwner());
 
+    // Configurar RecyclerView
+    binding.idLista.setLayoutManager(new LinearLayoutManager(getContext()));
 
-    /*Config recyclerWiew*/
+    // Observar lista de productos
     vm.getMutableProducto().observe(getViewLifecycleOwner(), productos -> {
-      ProductoAdapter adapter= new ProductoAdapter(productos, getLayoutInflater());
+      ProductoAdapter adapter = new ProductoAdapter(productos, getLayoutInflater());
       binding.idLista.setAdapter(adapter);
     });
-
-    binding.idLista.setLayoutManager(new LinearLayoutManager(getContext()));
-    // Observar si la lista está vacia y mostrar/ocultar el TextView
-    vm.getListaVacia().observe(getViewLifecycleOwner(), vacia -> {
-      if (vacia) {
-        binding.TvVacia.setVisibility(View.VISIBLE);
-        binding.TvVacia.setText("La lista está vacía");
-        binding.idLista.setVisibility(View.GONE);
-      } else {
-        binding.TvVacia.setVisibility(View.GONE);
-        binding.idLista.setVisibility(View.VISIBLE);
-      }
-    });
-
 
     return root;
   }
