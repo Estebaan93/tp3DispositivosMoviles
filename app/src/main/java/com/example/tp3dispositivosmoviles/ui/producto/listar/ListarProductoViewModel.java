@@ -1,5 +1,5 @@
-//ui/producto/ListarProductoViewModel
-package com.example.tp3dispositivosmoviles.ui.producto;
+//ui/producto/listar/ListarProductoViewModel
+package com.example.tp3dispositivosmoviles.ui.producto.listar;
 
 import android.app.Application;
 
@@ -56,32 +56,15 @@ cuando quieras fusionar, derivar o reaccionar a multiples LiveData.*/
     return estadoLista;
   }
 
-  /*private void cargarProductos() {
-    List<Producto> lista = repoProducto.getProductosOrdenadosPorDescripcion();
-    productos.setValue(lista);
-    actualizarListaVacia(lista);
-
-  }*/
-
-
-  /*private void actualizarEstadoLista() {
-    List<Producto> lista = mutableProducto.getValue();
-    if (estadoLista == null) {
-      estadoLista = new MutableLiveData<>();
-    }
-    if (lista == null || lista.isEmpty()) {
-      estadoLista.setValue(EstadoLista.VACIA);
-    } else {
-      estadoLista.setValue(EstadoLista.CON_DATOS);
-    }
+  public Producto buscarProductoPorCodigo(String codigo) {
+    return repoProducto.buscarPorCodigo(codigo);
   }
-  public void refrescarLista() {
-    if (mutableProducto == null) {
-      mutableProducto = new MutableLiveData<>();
-    }
-    mutableProducto.setValue(repoProducto.getProductosOrdenadosPorDescripcion());
-    actualizarEstadoLista();
-  }*/
+
+  public void actualizarProducto(Producto producto) {
+    repoProducto.actualizarProducto(producto);
+  }
+
+
 
   public enum EstadoLista {
     VACIA, CON_DATOS

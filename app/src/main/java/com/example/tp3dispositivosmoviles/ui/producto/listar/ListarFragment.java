@@ -1,5 +1,5 @@
-//ui/producto/ListarFragment
-package com.example.tp3dispositivosmoviles.ui.producto;
+//ui/producto/listar/ListarFragment
+package com.example.tp3dispositivosmoviles.ui.producto.listar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

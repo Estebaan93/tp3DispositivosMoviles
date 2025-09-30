@@ -1,7 +1,6 @@
-//ui/producto/ProductoAdapter
-package com.example.tp3dispositivosmoviles.ui.producto;
+//ui/producto/listar/ProductoAdapter
+package com.example.tp3dispositivosmoviles.ui.producto.listar;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import com.example.tp3dispositivosmoviles.R;
 import com.example.tp3dispositivosmoviles.modelo.Producto;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>{

@@ -14,9 +14,10 @@ import java.util.List;
 public class ProductoRepositorio {
   /*Manejamos la lista en memoria, mientras la app este activa*/
   private static ProductoRepositorio instancia; //asegura que toda la app use la misma lista de productos en memoria.
-  private static final ArrayList<Producto> productos= new ArrayList<>();
+  private static final ArrayList<Producto> productos = new ArrayList<>();
   /**/
   private MutableLiveData<List<Producto>> productosLiveData;
+
   private ProductoRepositorio() {
     // constructor privado: evita que se cree con "new"
   }
@@ -36,21 +37,6 @@ public class ProductoRepositorio {
     return productosLiveData;
   }
 
-
-  //Ordenamos por descripcion
-  /*public List<Producto> getProductosOrdenadosPorDescripcion() {
-    List<Producto> copia = new ArrayList<>(productos);
-    Collections.sort(copia, (p1, p2) -> p1.getDescripcion().compareToIgnoreCase(p2.getDescripcion()));
-    return copia;
-  }*/
-
-  //verificamos si existe el codigo
-  /*public boolean existeCodigo(String codigo){
-    for(Producto p: productos){
-      if(p.getCodigo().equalsIgnoreCase(codigo)) return true;
-    }
-    return false;
-  }*/
 
   //Intenta agregar, si agrega es true
   public boolean agregar(Producto producto) {
@@ -73,4 +59,22 @@ public class ProductoRepositorio {
     productosLiveData.setValue(copia);
   }
 
+  public Producto buscarPorCodigo(String codigo) {
+    for (Producto p : productos) {
+      if (p.getCodigo().equalsIgnoreCase(codigo)) {
+        return p;
+      }
+    }
+    return null;
+  }
+
+  public void actualizarProducto(Producto producto) {
+    for (int i = 0; i < productos.size(); i++) {
+      if (productos.get(i).getCodigo().equalsIgnoreCase(producto.getCodigo())) {
+        productos.set(i, producto);
+        actualizarLista(); // notifica a los observers
+        return;
+      }
+    }
+  }
 }

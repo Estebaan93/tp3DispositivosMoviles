@@ -13,6 +13,10 @@
         android:icon="@drawable/order"
         android:title="Cargar" />
     <item
+        android:id="@+id/nav_modificar"
+        android:icon="@drawable/edit"
+        android:title="Modificar" />
+    <item
         android:id="@+id/nav_slideshow"
         android:icon="@drawable/logout"
         android:title="Salir" />

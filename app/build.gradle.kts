@@ -45,6 +45,7 @@ dependencies {
   implementation(libs.recyclerview)
   implementation(libs.cardview)
   implementation(libs.databinding.runtime)
+  implementation(libs.legacy.support.v4)
   testImplementation(libs.junit)
   androidTestImplementation(libs.ext.junit)
   androidTestImplementation(libs.espresso.core)

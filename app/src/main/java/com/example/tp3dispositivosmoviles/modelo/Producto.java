@@ -1,7 +1,9 @@
 //modelo/Producto
 package com.example.tp3dispositivosmoviles.modelo;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
   private String codigo;
   private String descripcion;
   private double precio;

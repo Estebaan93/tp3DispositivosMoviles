@@ -7,13 +7,13 @@
 
   <fragment
       android:id="@+id/nav_listar"
-      android:name="com.example.tp3dispositivosmoviles.ui.producto.ListarFragment"
+      android:name="com.example.tp3dispositivosmoviles.ui.producto.listar.ListarFragment"
       android:label="@string/listar"
       tools:layout="@layout/fragment_listar" />
 
   <fragment
       android:id="@+id/nav_cargar"
-      android:name="com.example.tp3dispositivosmoviles.ui.producto.CargarFragment"
+      android:name="com.example.tp3dispositivosmoviles.ui.producto.cargar.CargarFragment"
       android:label="@string/cargar"
       tools:layout="@layout/fragment_cargar" />
 
@@ -22,4 +22,24 @@
       android:name="com.example.tp3dispositivosmoviles.ui.slideshow.SlideshowFragment"
       android:label="@string/salir"
       tools:layout="@layout/fragment_slideshow" />
+
+  <fragment
+      android:id="@+id/nav_modificar"
+      android:name="com.example.tp3dispositivosmoviles.ui.producto.modificar.ModificarProductoFragment"
+      android:label="Modificar"
+      tools:layout="@layout/fragment_modificar_producto" >
+    <action
+        android:id="@+id/action_nav_modificar_to_detalleFragment"
+        app:destination="@id/detalleFragment" />
+  </fragment>
+  <fragment
+      android:id="@+id/detalleFragment"
+      android:name="com.example.tp3dispositivosmoviles.ui.producto.modificar.DetalleFragment"
+      android:label="Detalle"
+      tools:layout="@layout/fragment_detalle" >
+    <action
+        android:id="@+id/action_detalleFragment_to_nav_listar"
+        app:destination="@id/nav_listar" />
+  </fragment>
+
 </navigation>

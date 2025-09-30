@@ -8,17 +8,17 @@
     <import type="android.view.View" />
 
     <!-- Importamos el enum EstadoLista del ViewModel -->
-    <import type="com.example.tp3dispositivosmoviles.ui.producto.ListarProductoViewModel.EstadoLista" />
+    <import type="com.example.tp3dispositivosmoviles.ui.producto.listar.ListarProductoViewModel.EstadoLista" />
 
     <variable
         name="vm"
-        type="com.example.tp3dispositivosmoviles.ui.producto.ListarProductoViewModel" />
+        type="com.example.tp3dispositivosmoviles.ui.producto.listar.ListarProductoViewModel" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      tools:context=".ui.producto.ListarFragment">
+      tools:context=".ui.producto.listar.ListarFragment">
 
     <!-- RecyclerView para mostrar los productos -->
     <androidx.recyclerview.widget.RecyclerView

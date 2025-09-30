@@ -1,5 +1,5 @@
-//ui/producto/CargarProductoViewModel
-package com.example.tp3dispositivosmoviles.ui.producto;
+//ui/producto/cargar/CargarProductoViewModel
+package com.example.tp3dispositivosmoviles.ui.producto.cargar;
 
 import android.app.Application;
 
@@ -46,6 +46,10 @@ public class CargarProductoViewModel extends AndroidViewModel {
 
     if(codigo.isEmpty() || descripcion.isEmpty() || precio<=0){
       evento.setValue(new Evento("Datos invalidos", false));
+      return;
+    }
+    if (!codigo.matches("\\d+")) {
+      evento.setValue(new Evento("El codigo debe contener solo numeros", false));
       return;
     }
 

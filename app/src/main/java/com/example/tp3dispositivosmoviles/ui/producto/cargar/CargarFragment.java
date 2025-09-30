@@ -1,5 +1,5 @@
-//ui/producto/CargarFragment
-package com.example.tp3dispositivosmoviles.ui.producto;
+//ui/producto/cargar/CargarFragment
+package com.example.tp3dispositivosmoviles.ui.producto.cargar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
